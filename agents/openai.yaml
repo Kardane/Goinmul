@@ -1,0 +1,6 @@
+interface:
+  display_name: "Goinmul"
+  short_description: "Make the smallest correct change and prove it works"
+  default_prompt: "Use $goinmul to complete this engineering task with minimal scope, root-cause fixes, and faithful verification."
+policy:
+  allow_implicit_invocation: false
