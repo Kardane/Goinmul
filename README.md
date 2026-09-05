@@ -6,6 +6,8 @@ It is designed to make the smallest correct change that satisfies the requested 
 
 > Lazy means efficient, not careless.
 
+Based on: [Vowline](https://github.com/chojondocho/vowline), [Ponytail](https://github.com/dietrichgebert/ponytail)
+
 ## What it does
 
 Goinmul combines three concerns into one engineering workflow:
