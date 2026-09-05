@@ -24,7 +24,7 @@ Goinmul does not optimize away explicit requirements, security controls, accessi
 
 The default mode for implementation, fixes, refactors, migrations, cleanup, and simplification.
 
-Goinmul follows a minimalism ladder and stops at the first option that fully satisfies the outcome:
+Goinmul uses a minimalism ladder as a search order, not an absolute ranking. It respects project conventions and chooses a complete solution with low change scope, maintenance burden, dependency burden, and verification difficulty:
 
 1. Omit genuinely unnecessary work.
 2. Reuse an existing helper, type, pattern, or capability.
@@ -38,13 +38,15 @@ Goinmul follows a minimalism ladder and stops at the first option that fully sat
 
 Used when the request is specifically for an over-engineering or simplification review and does **not** ask to apply fixes.
 
+Findings include evidence, a replacement, and any conditions or checks needed to preserve behavior. Reviews prioritize reduced maintenance burden rather than line counts. Finding no simplification does not establish correctness or release readiness.
+
 ### Minimalism intensity
 
 You can optionally specify an intensity:
 
-- `lite` — implement what was requested and mention a materially simpler alternative if one exists.
-- `full` — default; enforce the complete minimalism ladder.
-- `ultra` — aggressively challenge optional or speculative scope while preserving explicit requirements and correctness.
+- `lite` — follow the existing local approach and mention evident alternatives without searching for optional simplifications.
+- `full` — default; check relevant alternatives within the touched flow and choose the lowest-burden complete solution.
+- `ultra` — additionally inspect optional abstractions and configuration for removal within the authorized scope, preserving explicit requirements and correctness.
 
 ## Installation
 

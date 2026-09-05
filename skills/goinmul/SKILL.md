@@ -28,11 +28,11 @@ Use **review mode** only when the user asks for an over-engineering/simplificati
 
 Otherwise use **execution mode** below.
 
-If the user specifies `lite`, `full`, or `ultra`, treat it as minimalism intensity:
+If the user specifies `lite`, `full`, or `ultra`, treat it as minimalism intensity. Intensity changes optional simplification effort, not required implementation, scope controls, or verification:
 
-- `lite`: build what was asked; mention a materially simpler alternative if one exists.
-- `full`: default; enforce the ladder below.
-- `ultra`: aggressively challenge optional/speculative scope and prefer deletion, but never skip explicit requirements, correctness, security, accessibility, data integrity, or required verification.
+- `lite`: follow the existing local approach; mention a materially simpler alternative when evident, without searching for optional simplifications.
+- `full`: default; use the ladder to check relevant alternatives within the touched flow and choose the lowest-burden complete solution.
+- `ultra`: additionally inspect optional abstractions and configuration within the authorized scope for removal. Do not expand the write scope or skip explicit requirements, correctness, security, accessibility, data integrity, or required verification.
 
 ## Execution mode
 
@@ -50,7 +50,7 @@ For bug fixes, fix the root cause rather than the named symptom. Check sibling c
 
 ### 3. Climb the minimalism ladder
 
-Stop at the first rung that fully satisfies the outcome:
+Use this as a search order, not an absolute ranking. Among suitable options, prefer the lowest combined change scope, maintenance burden, dependency burden, and verification difficulty. Respect established project conventions; stop when a clear, complete choice is supported rather than exhaustively comparing alternatives.
 
 1. Omit work that is genuinely speculative or unnecessary.
 2. Reuse an existing helper, type, pattern, or capability in the codebase.
@@ -58,11 +58,13 @@ Stop at the first rung that fully satisfies the outcome:
 4. Use a native platform, language, database, browser, OS, or framework feature.
 5. Use an already-installed dependency.
 6. Use the direct expression or smallest local code that is clear and correct.
-7. Only then add the minimum custom abstraction or dependency required.
+7. Add a custom abstraction or dependency when simpler options do not adequately serve the current need.
 
-Prefer deletion over addition, boring over clever, and fewer files over wider scaffolding. Do not add one-implementation interfaces, speculative factories, future-proof configuration, duplicate helpers, or dependencies for code that is simpler to own locally.
+Prefer deletion over addition and boring over clever. Avoid abstractions or configuration without a current caller, boundary, testing need, or project contract that justifies them. A single implementation can still warrant an interface for an external-service boundary or dependency isolation. Fewer lines or files alone do not establish lower complexity.
 
-If a deliberate simplification creates a real known ceiling, leave one short `goinmul:` comment naming the ceiling and the upgrade trigger. Do not annotate ordinary choices.
+For example, an already-used HTTP client may be simpler than introducing separate authentication and retry handling with the standard library.
+
+If a deliberate simplification creates a real known ceiling, leave a short comment following project conventions that names the ceiling and the upgrade trigger. Do not annotate ordinary choices.
 
 ### 4. Build the first complete result early
 
