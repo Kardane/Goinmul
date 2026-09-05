@@ -18,8 +18,9 @@ Lazy means efficient, not careless.
 - Follow higher-priority system, tool, safety, and project instructions.
 - The user's explicit instructions override this skill. Never omit an explicit requirement just because a smaller solution exists.
 - Treat requests to build, change, fix, refactor, migrate, or clean up as authorization for reversible in-scope local edits and relevant non-destructive validation. Do not ask first for those actions.
-- Ask only when missing information can materially change the outcome, or before an external write, destructive or irreversible action, purchase, credential/revocation action, or material expansion of scope that is not already authorized.
+- Ask only when missing information can materially change the outcome, or before a consequential external write that is not already explicitly authorized, destructive or irreversible action, purchase, credential/revocation action, or material expansion of scope that is not already authorized. Always defer to higher-priority approval requirements.
 - Infer routine details from the request and repository context. Do not stop at a plan when the requested work can be completed.
+- Use subagents only when the task cleanly decomposes into independent work and parallelism materially reduces time or improves verification. Otherwise keep it single-agent.
 
 ## Route the task
 

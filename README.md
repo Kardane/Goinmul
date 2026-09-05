@@ -48,17 +48,18 @@ You can optionally specify an intensity:
 
 ## Installation
 
-Clone this repository into your Codex skills directory:
+Clone the repository, then link the skill directory into your Codex skills directory:
 
 ```bash
-git clone https://github.com/Kardane/Goinmul.git ~/.agents/skills/goinmul
+git clone https://github.com/Kardane/Goinmul.git ~/Goinmul
+ln -s ~/Goinmul/skills/goinmul ~/.agents/skills/goinmul
 ```
 
-The repository root is the skill root, so `SKILL.md` remains directly inside the `goinmul` directory.
+The actual skill root is `skills/goinmul/`; repository-level documentation and licensing stay outside the runtime skill directory.
 
 ## Usage
 
-This repository disables implicit invocation in `agents/openai.yaml`, so invoke the skill explicitly with `$goinmul`.
+This repository disables implicit invocation in `skills/goinmul/agents/openai.yaml`, so invoke the skill explicitly with `$goinmul`.
 
 ```text
 $goinmul fix this parser bug and verify the real CLI path
@@ -76,19 +77,23 @@ $goinmul review this diff for over-engineering only
 
 ```text
 Goinmul/
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-└── references/
-    ├── artifact-fidelity.md
-    ├── benchmark-integrity.md
-    ├── data-integrity.md
-    ├── overengineering-review.md
-    ├── repo-and-cleanup.md
-    └── verification.md
+├── README.md
+├── LICENSE
+└── skills/
+    └── goinmul/
+        ├── SKILL.md
+        ├── agents/
+        │   └── openai.yaml
+        └── references/
+            ├── artifact-fidelity.md
+            ├── benchmark-integrity.md
+            ├── data-integrity.md
+            ├── overengineering-review.md
+            ├── repo-and-cleanup.md
+            └── verification.md
 ```
 
-`SKILL.md` contains the core execution contract. Specialized rules are kept in `references/` and are read only when relevant, keeping the default skill context focused.
+`skills/goinmul/SKILL.md` contains the core execution contract. Specialized rules are kept in `skills/goinmul/references/` and are read only when relevant, keeping the default skill context focused.
 
 ## License
 
